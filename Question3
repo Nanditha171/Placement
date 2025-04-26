@@ -1,0 +1,23 @@
+def is_disarium(num):
+    digits=str(num)
+    total=sum(int(digits[i])**(i+1)for i in range(len(digits)))
+    return total==num
+
+def first_n_disarium(n):
+    result=[]
+    num=0
+    while len(result)<n:
+        if is_disarium(num):
+            result.append(num)
+        num+=1
+    return result
+
+def disarium_in_range(start,end):
+    return [num for num in range(start,end+1)if is_disarium(num)]
+n=10
+start=0
+end=500
+print(f"First {n} Disarium numbers:")
+print(first_n_disarium(n))
+print(f"\nDisarium numbers between {start} and {end}:")
+print(disarium_in_range(start,end))
